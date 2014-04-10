@@ -1,4 +1,4 @@
 Bash3D
 ======
 
-Bash de 3d Programming
+Bash **だけ** で3Dレンダリングしようという謎のプロジェクト。
