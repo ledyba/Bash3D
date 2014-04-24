@@ -5,9 +5,7 @@
 function main()
 {
 	echo "Running..."
-	width=`tput cols`
-	height=`tput lines`
-	glFrustum `expr -$FACTOR \* 16 / 9` `expr $FACTOR \* 16 / 9` `to 1` `to -1` `to 2` `to 10`
+	glFrustum `to -1` `to 1` `to 1` `to -1` `to 2` `to 10`
 	glLoadIdentity
 	for ((i=0; i<720; ++i)); do
 		glClear
