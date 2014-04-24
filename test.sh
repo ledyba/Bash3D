@@ -67,6 +67,12 @@ function main() {
 	v1=(VEC 1 2 3 4)
 	mvMul m1 v1 v3
 	assertL mvMul v3 "(VEC 10 2 3 4)"
+
+	mScale 1 2 3 v3
+	assertL mScale v3 "(MAT 1 0 0 0 0 2 0 0 0 0 3 0 0 0 0 1)"
+
+	mTrans 1 2 3 v3
+	assertL mTrans v3 "(MAT 1 0 0 1 0 1 0 2 0 0 1 3 0 0 0 1)"
 }
 
 main
