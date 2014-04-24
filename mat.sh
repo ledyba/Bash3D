@@ -38,6 +38,28 @@ function mIdent()
 	eval "$1=(${v1[@]})"
 }
 
+function mScale()
+{
+	v1=(MAT\
+			$(expr $1 \* $FACTOR) 0 0 0\
+			0 $(expr $2 \* $FACTOR) 0 0\
+			0 0 $(expr $3 \* $FACTOR) 0\
+			0 0 0 $FACTOR\
+			)
+	eval "$4=(${v1[@]})"
+}
+
+function mTrans()
+{
+	v1=(MAT\
+			$FACTOR 0 0 $(expr $1 \* $FACTOR)\
+			0 $FACTOR 0 $(expr $2 \* $FACTOR)\
+			0 0 $FACTOR $(expr $3 \* $FACTOR)\
+			0 0 0 $FACTOR\
+			)
+	eval "$4=(${v1[@]})"
+}
+
 function mIndex() {
 	i=$1
 	j=$2
