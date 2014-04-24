@@ -60,6 +60,27 @@ function mTrans()
 	eval "$4=(${v1[@]})"
 }
 
+function mRotate()
+{
+	s=${SIN[$4]}
+	c=${COS[$4]}
+eval <<- EOF $5=\(MAT \
+\$\(expr \\\( $1 \\\* $1 \\\* \\\( $SINCOS_FACTOR \\\- $c \\\) \\\+ \\\( $c \\\* $FACTOR \\\* $FACTOR \\\) \\\) \\\/ $FACTOR \\\/ $SINCOS_FACTOR \) \
+\$\(expr \\\( $1 \\\* $2 \\\* \\\( $SINCOS_FACTOR \\\- $c \\\) \\\+ \\\( $s \\\* $3      \\\* $FACTOR \\\) \\\) \\\/ $FACTOR \\\/ $SINCOS_FACTOR \) \
+\$\(expr \\\( $1 \\\* $3 \\\* \\\( $SINCOS_FACTOR \\\- $c \\\) \\\+ \\\( $s \\\* $2      \\\* $FACTOR \\\) \\\) \\\/ $FACTOR \\\/ $SINCOS_FACTOR \) \
+0 \
+\$\(expr \\\( $2 \\\* $1 \\\* \\\( $SINCOS_FACTOR \\\- $c \\\) \\\+ \\\( $s \\\* $3      \\\* $FACTOR \\\) \\\) \\\/ $FACTOR \\\/ $SINCOS_FACTOR \) \
+\$\(expr \\\( $2 \\\* $2 \\\* \\\( $SINCOS_FACTOR \\\- $c \\\) \\\+ \\\( $c \\\* $FACTOR \\\* $FACTOR \\\) \\\) \\\/ $FACTOR \\\/ $SINCOS_FACTOR \) \
+\$\(expr \\\( $2 \\\* $3 \\\* \\\( $SINCOS_FACTOR \\\- $c \\\) \\\+ \\\( $s \\\* $1      \\\* $FACTOR \\\) \\\) \\\/ $FACTOR \\\/ $SINCOS_FACTOR \) \
+0 \
+\$\(expr \\\( $1 \\\* $3 \\\* \\\( $SINCOS_FACTOR \\\- $c \\\) \\\+ \\\( $s \\\* $2      \\\* $FACTOR \\\) \\\) \\\/ $FACTOR \\\/ $SINCOS_FACTOR \) \
+\$\(expr \\\( $2 \\\* $3 \\\* \\\( $SINCOS_FACTOR \\\- $c \\\) \\\+ \\\( $s \\\* $1      \\\* $FACTOR \\\) \\\) \\\/ $FACTOR \\\/ $SINCOS_FACTOR \) \
+\$\(expr \\\( $3 \\\* $3 \\\* \\\( $SINCOS_FACTOR \\\- $c \\\) \\\+ \\\( $c \\\* $FACTOR \\\* $FACTOR \\\) \\\) \\\/ $FACTOR \\\/ $SINCOS_FACTOR \) \
+0 \
+0 0 0 $FACTOR \)
+EOF
+}
+
 function mIndex() {
 	i=$1
 	j=$2
