@@ -2,6 +2,7 @@
 
 FACTOR=1
 
+. sincos.sh
 . vec.sh
 . mat.sh
 
@@ -73,6 +74,12 @@ function main() {
 
 	mTrans 1 2 3 v3
 	assertL mTrans v3 "(MAT 1 0 0 1 0 1 0 2 0 0 1 3 0 0 0 1)"
+	
+	mRotate 1 2 3 0 v3
+	assertL mRotate v3 "(MAT 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1)"
+
+	mRotate 0 0 1 180 v3
+	assertL mRotate v3 "(MAT -1 0 0 0 0 -1 0 0 0 0 1 0 0 0 0 1)"
 }
 
 main
