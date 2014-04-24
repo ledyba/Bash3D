@@ -59,10 +59,23 @@ function mSet() {
 	eval "$5=(${in1[@]})"
 }
 
+function mvMul()
+{
+	in1=($(eval echo $(eval echo "\$\{$1[@]\}")))
+	in2=($(eval echo $(eval echo "\$\{$2[@]\}")))
+	mAssert in1
+	vAssert in2
+eval <<- EOF $3=\(VEC \
+\$\(expr \\\( ${in1[1]} \\\* ${in2[1]} \\\+ ${in1[2]} \\\* ${in2[2]} \\\+ ${in1[3]} \\\* ${in2[3]} \\\+ ${in1[4]} \\\* ${in2[4]} \\\) \\\/ $FACTOR \) \
+\$\(expr \\\( ${in1[5]} \\\* ${in2[1]} \\\+ ${in1[6]} \\\* ${in2[2]} \\\+ ${in1[7]} \\\* ${in2[3]} \\\+ ${in1[8]} \\\* ${in2[4]} \\\) \\\/ $FACTOR \) \
+\$\(expr \\\( ${in1[9]} \\\* ${in2[1]} \\\+ ${in1[10]} \\\* ${in2[2]} \\\+ ${in1[11]} \\\* ${in2[3]} \\\+ ${in1[12]} \\\* ${in2[4]} \\\) \\\/ $FACTOR \) \
+\$\(expr \\\( ${in1[13]} \\\* ${in2[1]} \\\+ ${in1[14]} \\\* ${in2[2]} \\\+ ${in1[15]} \\\* ${in2[3]} \\\+ ${in1[16]} \\\* ${in2[4]} \\\) \\\/ $FACTOR \) \)
+EOF
+}
+
 function mMul() {
 	in1=($(eval echo $(eval echo "\$\{$1[@]\}")))
 	in2=($(eval echo $(eval echo "\$\{$2[@]\}")))
-	mZero mat
 	mAssert in1
 	mAssert in2
 	eval <<-EOF $3=\(MAT \

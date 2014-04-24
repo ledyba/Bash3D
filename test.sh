@@ -9,9 +9,9 @@ function assertV ()
 {
 	v=$(eval "echo \$$2")
 	if [ "$v" = "$3" ]; then
-		echo $1 :OK
+		echo $1  :OK
 	else
-		echo $1 :NG $2 is not $3 -\> $v
+		echo $1  :NG $2 is not $3 -\> $v
 		exit -1
 	fi
 }
@@ -63,6 +63,10 @@ function main() {
 			)
 	mMul m1 m1 v3
 	assertL mMul v3 "(MAT 1 2 2 2 0 1 0 0 0 0 1 0 0 0 0 1)"
+
+	v1=(VEC 1 2 3 4)
+	mvMul m1 v1 v3
+	assertL mvMul v3 "(VEC 10 2 3 4)"
 }
 
 main
