@@ -56,18 +56,20 @@ function main() {
 	vAdd v1 v2 v3
 	assertL vAdd v3 "(VEC 2 4 6 9)"
 
+	FACTOR=10
 	m1=(MAT\
-			1 1 1 1\
-			0 1 0 0\
-			0 0 1 0\
-			0 0 0 1\
+			10 10 10 10\
+			0 10 0 0\
+			0 0 10 0\
+			0 0 0 10\
 			)
 	mMul m1 m1 v3
-	assertL mMul v3 "(MAT 1 2 2 2 0 1 0 0 0 0 1 0 0 0 0 1)"
+	assertL mMul v3 "(MAT 10 20 20 20 0 10 0 0 0 0 10 0 0 0 0 10)"
 
-	v1=(VEC 1 2 3 4)
+	v1=(VEC 10 20 30 40)
 	mvMul m1 v1 v3
-	assertL mvMul v3 "(VEC 10 2 3 4)"
+	assertL mvMul v3 "(VEC 100 20 30 40)"
+	FACTOR=1
 
 	mScale 1 2 3 v3
 	assertL mScale v3 "(MAT 1 0 0 0 0 2 0 0 0 0 3 0 0 0 0 1)"
@@ -80,6 +82,11 @@ function main() {
 
 	mRotate 0 0 1 180 v3
 	assertL mRotate v3 "(MAT -1 0 0 0 0 -1 0 0 0 0 1 0 0 0 0 1)"
+	
+	FACTOR=10
+	mFrustum -10 10 10 -10 20 100 v3
+	assertL mFrustum v3 "(MAT 20 0 0 0 0 -20 0 0 0 0 -15 50 0 0 -10 0)"
+	FACTOR=1
 }
 
 main
