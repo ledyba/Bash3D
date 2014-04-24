@@ -22,61 +22,60 @@ function vAdd {
 	in2=($(eval echo $(eval echo "\$\{$2[@]\}")))
 	vAssert in1
 	vAssert in2
-	out=(VEC \
-			`expr ${in1[1]} + ${in2[1]}`\
-			`expr ${in1[2]} + ${in2[2]}`\
-			`expr ${in1[3]} + ${in2[3]}`\
-			`expr ${in1[4]} + ${in2[4]}`\
-			)
-	eval "$3=(${out[@]})"
+	eval <<- EOF $3=\(VEC \
+\$\(expr ${in1[1]} \\\+ ${in2[1]} \) \
+\$\(expr ${in1[2]} \\\+ ${in2[2]} \) \
+\$\(expr ${in1[3]} \\\+ ${in2[3]} \) \
+\$\(expr ${in1[4]} \\\+ ${in2[4]} \) \
+\)
+EOF
 }
 function vSub {
 	in1=($(eval echo $(eval echo "\$\{$1[@]\}")))
 	in2=($(eval echo $(eval echo "\$\{$2[@]\}")))
 	vAssert in1
 	vAssert in2
-	out=(VEC \
-			`expr ${in1[1]} - ${in2[1]}`\
-			`expr ${in1[2]} - ${in2[2]}`\
-			`expr ${in1[3]} - ${in2[3]}`\
-			`expr ${in1[4]} - ${in2[4]}`\
-			)
-	eval "$3=(${out[@]})"
+	eval <<- EOF $3=\(VEC \
+\$\(expr ${in1[1]} - ${in2[1]} \) \
+\$\(expr ${in1[2]} - ${in2[2]} \) \
+\$\(expr ${in1[3]} - ${in2[3]} \) \
+\$\(expr ${in1[4]} - ${in2[4]} \) \
+\)
+EOF
 }
 function vDiv {
 	in1=($(eval echo $(eval echo "\$\{$1[@]\}")))
 	in2=$2
 	vAssert in1
-	out=(VEC \
-			`expr ${in1[1]} \* $FACTOR \/ ${in2}`\
-			`expr ${in1[2]} \* $FACTOR \/ ${in2}`\
-			`expr ${in1[3]} \* $FACTOR \/ ${in2}`\
-			`expr ${in1[4]} \* $FACTOR \/ ${in2}`\
-			)
-	eval "$3=(${out[@]})"
+	eval <<- EOF $3=\(VEC \
+\$\(expr ${in1[1]} \\\* $FACTOR \\\/ ${in2} \) \
+\$\(expr ${in1[2]} \\\* $FACTOR \\\/ ${in2} \) \
+\$\(expr ${in1[3]} \\\* $FACTOR \\\/ ${in2} \) \
+\$\(expr ${in1[4]} \\\* $FACTOR \\\/ ${in2} \) \
+\)
+EOF
 }
 function vMul {
 	in1=($(eval echo $(eval echo "\$\{$1[@]\}")))
 	in2=$2
 	vAssert in1
-	out=(VEC \
-			`expr ${in1[1]} \* ${in2} \/ $FACTOR`\
-			`expr ${in1[2]} \* ${in2} \/ $FACTOR`\
-			`expr ${in1[3]} \* ${in2} \/ $FACTOR`\
-			`expr ${in1[4]} \* ${in2} \/ $FACTOR`\
-			)
-	eval "$3=(${out[@]})"
+	eval <<- EOF $3=\(VEC \
+\$\(expr ${in1[1]} \\\* ${in2} \\\/ $FACTOR \) \
+\$\(expr ${in1[2]} \\\* ${in2} \\\/ $FACTOR \) \
+\$\(expr ${in1[3]} \\\* ${in2} \\\/ $FACTOR \) \
+\$\(expr ${in1[4]} \\\* ${in2} \\\/ $FACTOR \) \
+\)
+EOF
 }
 function vDot {
 	in1=($(eval echo $(eval echo "\$\{$1[@]\}")))
 	in2=($(eval echo $(eval echo "\$\{$2[@]\}")))
 	vAssert in1
 	vAssert in2
-	out=$(expr \( \
-			${in1[1]} \* ${in2[1]} +\
-			${in1[2]} \* ${in2[2]} +\
-			${in1[3]} \* ${in2[3]} +\
-			${in1[4]} \* ${in2[4]}\
-			\) \/ $FACTOR)
-	eval "$3=(${out[@]})"
+	eval <<- EOF $3=\$\(expr \\\( \
+${in1[1]} \\\* ${in2[1]} \\\+ \
+${in1[2]} \\\* ${in2[2]} \\\+ \
+${in1[3]} \\\* ${in2[3]} \\\+ \
+${in1[4]} \\\* ${in2[4]} \\\) \\\/ $FACTOR \)
+EOF
 }
