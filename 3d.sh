@@ -101,7 +101,8 @@ function gLine()
 	y=$2
 	err=`expr $dx - $dy`
 	while true; do
-		SCR_BUFF=$(echo $SCR_BUFF | sed s/./*/$(expr $y \* $COL \+ $x \+ 1))
+		pos=$(expr $y \* $COL \+ $x \+ 1)
+		SCR_BUFF="${SCR_BUFF:0:${pos}}*${SCR_BUFF:${pos}+1}"
 		if [ $x -eq $3 -a $y -eq $4 ]; then
 			return 0
 		fi
