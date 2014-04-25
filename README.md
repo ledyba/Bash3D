@@ -12,3 +12,12 @@ Bash **だけ** で3Dレンダリングしようという謎のプロジェク�
      * データ構造はリスト構造（ネストは出来るが、大きな速度ペナルティあり）のみ使用可能
  * 「bash」縛りなので、bashの拡張は使ってOK
 
+解説・動画
+===========
+
+ * bashで3Dプログラミング | ψ（プサイ）の興味関心空間
+     * http://ledyba.org/2014/04/25205740.php
+ * youtube
+     * https://www.youtube.com/watch?v=nucfSC71iz8
+ * ニコ動
+     * http://www.nicovideo.jp/watch/sm23404157
