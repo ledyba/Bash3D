@@ -1,11 +1,31 @@
 Bash3D
 ======
 
-Bash **だけ** で3Dレンダリングしようという謎のプロジェクト。
-
 Bash 3D project is an effort to render 3D Cube at Bash Script **only**.
 
-ルール / Rule
+Rules
+-------------
+
+ * **Do not** use dc / bc calculator. Use expr instead.
+ * **Do not** use Turing-complete programming languages, such as perl, ruby, awk and so on.
+ * **Do not** use external program to handle convenient data structure, such as jq (An external command that can handle JSON in shell)
+ * Bash extension is available. 
+
+Demo movies
+-------------
+
+ * youtube video
+     * https://www.youtube.com/watch?v=nucfSC71iz8
+ * ニコ動 / nicovideo
+     * http://www.nicovideo.jp/watch/sm23404157
+
+Bash3D
+======
+
+Bash **だけ** で3Dレンダリングしようという謎のプロジェクト。
+
+
+ルール
 -------------
 
  * dc / bcのような電卓は使わない。expr（整数演算のみ）使ってよし。
@@ -14,11 +34,6 @@ Bash 3D project is an effort to render 3D Cube at Bash Script **only**.
      * データ構造はリスト構造（ネストは出来るが、大きな速度ペナルティあり）のみ使用可能
  * 「bash」縛りなので、bashの拡張は使ってOK
 
-
- * **Do not** use dc / bc calculator. Use expr instead.
- * **Do not** use Turing-complete programming languages, such as perl, ruby, awk and so on.
- * **Do not** use external program to handle convenient data structure, such as jq (An external command that can handle JSON in shell)
- * Bash extension is available. 
 
 解説・動画
 ===========
