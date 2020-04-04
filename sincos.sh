@@ -84,7 +84,7 @@ function sin()
 
 function cos()
 {
-	echo ${SIN[$1]}
+	echo ${COS[$1]}
 }
 
 
